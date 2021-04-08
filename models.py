@@ -50,11 +50,11 @@ class PlaylistSong(db.Model):
                   primary_key=True,
                   autoincrement=True)
     
-    playlist_id = db.Column(db.Text,
+    playlist_id = db.Column(db.Integer,
                             db.ForeignKey('playlist.id'),
                             nullable=False)
 
-    song_id = db.Column(db.Text,
+    song_id = db.Column(db.Integer,
                         db.ForeignKey('song.id'),
                         nullable=False)
 

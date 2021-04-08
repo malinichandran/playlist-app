@@ -7,11 +7,19 @@
 
 
 <form method="POST">
-   
-   <div>
-       <p>Select a Song</p>
-        {{ form.song.choices }}
-    </div> 
+    {{ form.hidden_tag() }}
+
+    {% for field in form if field.widget.input_type != 'hidden'%}
+    <div class="form-group">
+      {{field.label}}
+      {{field(class_="form-control")}}
+      {% for err in field.errors %}
+      <small class="form-text text-danger">
+        {{err}}
+      </small>
+      {% endfor %}
+    </div>
+    {% endfor %}
     <button class="btn btn-primary">Add Song to this playlist</button>
     </form>
 
